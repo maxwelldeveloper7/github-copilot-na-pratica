@@ -19,29 +19,42 @@
                     <th>Ação</th>
                 </tr>
             </thead>
-            <tbody>
+            <!-- <tbody>
                 <tr>
                     <td>Ford</td>
                     <td>Fiesta</td>
                     <td>2018</td>
                     <td>R$ 45,000</td>
-                    <td><button class="btn btn-primary comprar-btn" data-car-id="1">Comprar</button></td>
+                    <td><button car="Ford" brand="Ford">Comprar</button></td>
                 </tr>
                 <tr>
                     <td>Chevrolet</td>
                     <td>Onix</td>
                     <td>2020</td>
                     <td>R$ 55,000</td>
-                    <td><button class="btn btn-primary comprar-btn" data-car-id="2">Comprar</button></td>
+                    <td><button car="Chevrolet" brand="Chevrolet">Comprar</button></td>
                 </tr>
                 <tr>
                     <td>Volkswagen</td>
                     <td>Gol</td>
                     <td>2019</td>
                     <td>R$ 40,000</td>
-                    <td><button class="btn btn-primary comprar-btn" data-car-id="3">Comprar</button></td>
+                    <td><button car="Volkswagen" brand="Volkswagen">Comprar</button></td>
                 </tr>
+            </tbody> -->
+            
+            <tbody>
+                {% for car in cars %}
+                <tr>
+                    <td>{{ car.brand }}</td>
+                    <td>{{ car.model }}</td>
+                    <td>{{ car.year }}</td>
+                    <td>R$ {{ car.price }}</td>
+                    <td><button car="{{ car.model }}" brand="{{ car.brand }}" class=" btn btn-primary">Comprar</button></td>
+                </tr>
+                {% endfor %}
             </tbody>
+            
         </table>
     </div>
     <script src="{{ url_for('static', filename='car_sales.js') }}"></script>
