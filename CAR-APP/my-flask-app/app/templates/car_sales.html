@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Vendas de Carros Usados</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Sistema de Vendas de Carros Usados</h1>
+        <table class="table table-striped mt-4">
+            <thead>
+                <tr>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Ano</th>
+                    <th>Preço</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Ford</td>
+                    <td>Fiesta</td>
+                    <td>2018</td>
+                    <td>R$ 45,000</td>
+                    <td><button class="btn btn-primary comprar-btn" data-car-id="1">Comprar</button></td>
+                </tr>
+                <tr>
+                    <td>Chevrolet</td>
+                    <td>Onix</td>
+                    <td>2020</td>
+                    <td>R$ 55,000</td>
+                    <td><button class="btn btn-primary comprar-btn" data-car-id="2">Comprar</button></td>
+                </tr>
+                <tr>
+                    <td>Volkswagen</td>
+                    <td>Gol</td>
+                    <td>2019</td>
+                    <td>R$ 40,000</td>
+                    <td><button class="btn btn-primary comprar-btn" data-car-id="3">Comprar</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="{{ url_for('static', filename='car_sales.js') }}"></script>
+</body>
+</html>
