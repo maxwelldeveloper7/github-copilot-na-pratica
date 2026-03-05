@@ -146,23 +146,19 @@ def main():
         Entre 30 a 70 por cento: "Bom trabalho, mas você pode melhorar!"
         Entre 70 a 100 por cento: "Parabens, você foi muito bem!"
     """
-    percentage = (score / len(questions)) * 100
-    
-    if percentage < 20:
-        print("Você precisa estudar muito mais!")
-    elif percentage < 40 and percentage >= 20:
-        print("Você precisa estudar mais!")
-    elif percentage < 60 and percentage >= 40:
-        print("Desempenho regular. Estude mais!")
-    elif percentage < 80 and percentage >= 60:
-        print("Bom trabalho, mas você pode melhorar!")
-    elif percentage < 100 and percentage >= 80:
-        print("Parabéns, você foi muito bem!")
-    elif percentage == 100:
-        print("Perfeito! Você acertou todas as questões!")
+    provide_feedback(score)
     
     # Exibe a pontuação final do usuário
     print(f"Sua pontuação final é: {score}/{len(questions)}")
+
+def provide_feedback(score):
+    percentage = (score / len(questions)) * 100
+    if percentage < 30:
+        print("Você precisa estudar mais!")
+    elif percentage < 70:
+        print("Bom trabalho, mas você pode melhorar!")
+    else:
+        print("Parabéns, você foi muito bem!")
 
 
 if __name__ == "__main__":
