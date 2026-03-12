@@ -1,0 +1,241 @@
+/* CSS Custom Properties */
+:root {
+    /* Eco-friendly color palette */
+    --primary: #10b981;
+    --secondary: #059609;
+    --accent: #34d399;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --info: #3b82f6;
+    --text: #1f2937;
+    --text-light: #6b7280;
+    --bg: #f3f4f6;
+    --white: #ffffff;
+
+    /* Spacing scale */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+
+    /* Border radius */
+    --radius: 0.5rem;
+    --radius-lg: 1rem;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%);
+    color: var(--text);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-md);
+}
+
+/* Utility Classes */
+.hidden {
+    display: none !important;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--text);
+    margin-bottom: var(--spacing-md);
+}
+
+/* Header */
+header {
+    background: var(--white);
+    box-shadow: var(--shadow-md);
+    padding: var(--spacing-lg);
+    text-align: center;
+}
+
+header h1 {
+    color: var(--primary);
+    font-size: 2rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+header p {
+    color: var(--text-light);
+    font-size: 1rem;
+}
+
+/* Form Styling */
+.calculator-form {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.calculator-form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.calculator-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: var(--spacing-xs);
+}
+
+.calculator-form input[type="text"],
+.calculator-form input[type="number"] {
+    width: 100%;
+    padding: var(--spacing-sm);
+    border: 1px solid var(--text-light);
+    border-radius: var(--radius);
+    margin-bottom: var(--spacing-sm);
+    font-size: 1rem;
+}
+
+.calculator-form input[type="text"]:focus,
+.calculator-form input[type="number"]:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+    outline: none;
+}
+
+.calculator-form .helper-text {
+    font-size: 0.875rem;
+    color: var(--text-light);
+    margin-bottom: var(--spacing-md);
+}
+
+/* Transport Mode Grid */
+.transport-selector__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.transport-selector__option {
+    position: relative;
+    border: 2px solid var(--text-light);
+    border-radius: var(--radius);
+    padding: var(--spacing-md);
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.transport-selector__radio {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.transport-selector__icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.transport-selector__text {
+    font-weight: bold;
+}
+
+.transport-selector__option:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.transport-selector__option:has(.transport-selector__radio:checked) {
+    border-color: var(--primary);
+    background-color: rgba(16, 185, 129, 0.1);
+}
+
+/* Checkbox */
+.manual-distance__label {
+    display: flex;
+    align-items: center;
+    margin-top: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+    font-weight: normal;
+}
+
+.manual-distance__checkbox {
+    margin-right: var(--spacing-sm);
+}
+
+/* Button */
+.calculator-form__submit {
+    width: 100%;
+    background: var(--primary);
+    color: var(--white);
+    border: none;
+    padding: var(--spacing-md);
+    border-radius: var(--radius);
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.calculator-form__submit:hover {
+    background: var(--secondary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.calculator-form__submit:disabled {
+    background: var(--text-light);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Spinner */
+.spinner {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--text-light);
+    border-top: 4px solid var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+    .transport-selector__grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

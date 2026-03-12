@@ -1,0 +1,95 @@
+create a semantic HTML5 structure for a  CO2 emissions calculator:
+HEADER:
+- Title with leaf emocj: "🚗💨 Calculadora de Emissão de Co²"
+- Subtitle explaining the purpose
+
+MAIN FORM (id="calculator-form":
+- Origin input (id="origin) with datalist (id="cities-list) for autocomplete
+- Destination input(id="destination") shera the same details:
+- Distance input(id="distance", type="numbuer", readonly) that will be auto-filled
+- Checkbox(id="manual-distance") labeled "Inserir distância manualmente"
+-  Transport mode selector with 4 radio buttons in a visual grid:
+ * bicycle, car (checed), bus, truck
+ * Each wraped in label with emoji icon and tex in Portuguese
+ * Use name="transport" and values: bicycle, car, bus, truck
+- Submit bytton with text "Calcular Emissão"
+
+RESULT SECTIONS (all hidden by default with class="hidden")
+- Section id="results" with empty div id="results-content"
+- Section id="comparison" with empty div id="comparision-content"
+- Section id="carbon-credits" with empty div id="carbon-credits-contenc"
+
+FOOTER:
+- Credits text: "Desenvolvido com entusiasmo para a DIO | Projeto Github Copilot"
+
+AT THE OF BODY (in this order):
+- Script tags loading JavaScript files in order:
+<script src="js/rconfig.js"></script>
+<script src="js/calculator.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/app.js"></script>
+
+REQUIREMENTS:
+- Use BEM naming convention for classes
+- Include meta viewport for responsive design
+- Link to css/style.css in head
+- The datalist should de empyt initially: "A distância será preenchida automaticamente"
+
+-------------------------------------------------------------------------------------------
+
+CSS CUSTOM PROPERTIES at :root level:
+- Eco-friendly color palette:
+ * --primary: #10b981, --secondary: #059609, --accent: #34d399
+ * --danger: #ef4444, --waring: #f59e0b, --info: #3b82f6
+ * --text: #1f2937, --text-light: #6b7280, --bg: #f3f4f6, --white: #ffffff
+- Spacing scale: --spacing-xs through --spacing-xl (0.5rem to 3rem)
+- --radius: 0.5rem, --radious-lg: 1rem
+- --shadow-sm, --shadow-md, --shadow-lg
+
+BASE STYLES:
+- Universal selector reset(margin, padding, box-sizing:border-box)
+- Body with gradient background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%)
+- Body min-height: 100vh, font-family: system fonts
+- Container class: max-width 1200px, centred with margin auto, paddng
+
+UTILITY CLASSES:
+- .hiddem (display: none important)
+- .section-title: large heading style
+
+HEADER:
+- White backgroud, shadow, padding
+- Title tith primary color, 2rem font size
+- Subtitle in gray, smaller font
+
+FORM STYLING (.calculator class):
+- white card bacground, rounded corners, shadow, padding
+- Form groups with margin-bottom
+- Labels: bold, display block, margin-botton
+- Text/number inputs: full width, padding, border with focus state (primary color border and shadow)
+- Helper text: small, gray, below inputs
+
+TRANSFORM MODE GRID:
+- container: display grid, 4 columns on desktop (2 on mobile), gap
+- Hide actual radio inputs with: position abosolute, opacity 0
+- Style the label as clickable card:
+ * Border, padding, rounded corners, cursos pointer, text-align center
+ * Displa flex column for icon (3rem emoji) and label text
+ * Hover: litf with transform translateY(-2px) and shadow
+ * When input checked: primary border(2px), light primary
+ * Use adjacent sibling selecor: input::checked + .card-class
+
+ CHECKBOX:
+ - Standard checkbox with label, maring top
+
+ BUTTON:
+ - Full width, primary background, white text, padding, rounded
+ - Hover: secondary color, lift effect
+ - Disabled: gray background, not-allowed cursor
+
+ Add .spinner class for loading animation:
+ - Inline-block, 40px circle, border with rotating top color
+ - @keyframes spin animation
+
+ RESPONSIVE:
+ - Use min-width: 768px media query for desktop adjustments
+ - Transport grid: 4 coluns on desktop, 2 on mobile(max-width: 767px)
