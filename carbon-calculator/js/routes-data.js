@@ -113,6 +113,6 @@ var RoutesDB = {
                 return route.distanceKm;
             }
         }
-        return null;
+        // return null;
     }
 };
