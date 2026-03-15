@@ -221,3 +221,92 @@ estimateCreditPrice: function(credits){
 
 Add comments explaining each calculation
 The file defines one global variable
+
+--------------------------------------------------------------------------------
+
+Create js/ui.js with a global UI object containing:
+
+UTILITY METHODS:
+
+formatNumber: function(numbuer, decimal){
+    // Use toFixed() for decimals
+    // Add thousand separators using regex or toLocaleString('pt-BR')
+    // Return formatted string
+}
+
+formatCurrency: function(value){
+    // Format as R$ with pt-BR locale
+    // Return "R$ 1.234,56" format
+}
+
+showELement: function(elementId){
+    // Get element by id
+    // Remove 'hiddem' class
+}
+
+hideELement: function(elementId){
+    // Get element by id
+    // Add 'hiddem' class
+}
+
+scrollToElement: funcion(elementId){
+    // Get element by ID
+    // Use scrollIntoView smooth behavior
+}
+
+RENDERING METHODS:
+
+renderResults: funcion(data){
+    // data object contains: origin, destination, distance, emission, mode, savings
+    // Get mode metadata from CONFIG.TRANSPORT_MODES
+    // Create HTML string with template literals containing:
+     - Route card showing origin -> destination
+     - Distance card showing distance in km
+     - Emission card showing CO2 in kg with green laef icon
+     - Transport card showing mode icon and label
+     - if mode is not 'car' and savings exist: savings card showing kg saved and percentage
+    // Return complete HTML string
+    // Use div with class="reslts__card! for each card
+    // Use BEM naming for internal elements
+}
+
+rederComparison: funcion(modesArray, selectedMode){
+    // modesArray from Calculator.calcuateAllModes()
+    // Create HTML string for each mode:
+     - Container div with class="comparison__item"
+     - if selected, add badge with "Selecionado" text
+     - Stats showing emission and percentage vs car
+     - Progress bar with width based on emission (use max emisson form 100% reference)
+     - Color-code bar: green(0-25%), yellow ((25-75%)), orange(75-100%), red(>100%)
+    // At the end, add top box with relpfull message
+    // Return: complete HTML string
+}
+
+renderCarbonCredts: funcion(credsData){
+    // creditsData contains: {credits, price {min, max, average}}
+    // Create HTML string with:
+     - Grid with 2 cards
+     - Card 1: Credits needed(large number), helper text "crédito = 1000 kg Co²"
+     - Card 2: Estimated price (average), range showing min-max
+     - Info box explaining what carbon credits are
+     - Button "Conpensar Emissões" (can be non-functional for demo)
+    // Return complete HTML string
+    // Use formatNumber and formatCurrency for values
+}
+
+showLoading: funcion(buttonElement){
+    // Save original text in data attribute: buttonElement.dataset.originalText
+    // Disabled button
+    // Change innerHTML to show spinner and "Calculando..." text
+    // Spinner: '<span class="spiner"></span? Calculando...'
+
+}
+
+hideLoading: funcion(buttonElement){
+    // Enable button
+    // Restore original text from data attribute
+}
+
+All methods should be part of the global UI object
+Use clear comments explaining the HTML structure
+

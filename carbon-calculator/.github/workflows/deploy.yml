@@ -1,0 +1,84 @@
+```yaml
+# ============================================================
+# Workflow: Deploy GitHub Pages
+# Arquivo: .github/workflows/deploy-pages.yml
+# Deploy automático de um site estático (HTML, CSS, JS)
+# sempre que houver push na branch "main".
+# ============================================================
+
+name: Deploy GitHub Pages
+
+# Dispara o workflow quando houver push na branch main
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # Permite disparar manualmente o workflow
+
+# Permissões necessárias para publicar no GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Controla concorrência para evitar múltiplos deploys simultâneos
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: github-pages
+    runs-on: ubuntu-latest
+
+    # Define o ambiente de publicação
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+
+      # --------------------------------------------------------
+      # Etapa 1: Fazer checkout do repositório
+      # Baixa o código da branch main para o runner
+      # --------------------------------------------------------
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      # --------------------------------------------------------
+      # Etapa 2: Configurar GitHub Pages
+      # Prepara o ambiente para deploy no Pages
+      # --------------------------------------------------------
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+
+      # --------------------------------------------------------
+      # Etapa 3: Preparar diretório de publicação
+      # Copia os arquivos do projeto para a pasta "dist"
+      # --------------------------------------------------------
+      - name: Preparar arquivos para publicação
+        run: |
+          mkdir dist
+          cp -r *.html dist/ || true
+          cp -r css dist/ || true
+          cp -r js dist/ || true
+          cp -r assets dist/ || true
+          cp -r images dist/ || true
+
+      # --------------------------------------------------------
+      # Etapa 4: Enviar artefato para o GitHub Pages
+      # O diretório publicado será "dist"
+      # --------------------------------------------------------
+      - name: Upload do artefato
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+      # --------------------------------------------------------
+      # Etapa 5: Deploy no GitHub Pages
+      # Publica o site automaticamente
+      # --------------------------------------------------------
+      - name: Deploy no GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+```
