@@ -48,15 +48,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 savings: savingsData
             });
 
-            comparisonContent.innerHTML = UI.rederComparison(allModes, selectedMode);
-            creditsContent.innerHTML = UI.renderCarbonCredts({
+            comparisonContent.innerHTML = UI.renderComparison(allModes, selectedMode);
+            creditsContent.innerHTML = UI.renderCarbonCredits({
                 credits: credits,
                 price: price
             });
 
-            UI.showELement('results');
-            UI.showELement('comparison');
-            UI.showELement('carbon-credits');
+            UI.showElement('results');
+            UI.showElement('comparison');
+            UI.showElement('carbon-credits');
             UI.scrollToElement('results');
 
             UI.hideLoading(button);

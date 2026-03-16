@@ -44,7 +44,7 @@ var UI = {
      * Show an element by removing the 'hidden' CSS class.
      * @param {string} elementId
      */
-    showELement: function(elementId) {
+    showElement: function(elementId) {
         var el = document.getElementById(elementId);
         if (!el) return;
         el.classList.remove('hidden');
@@ -131,7 +131,7 @@ var UI = {
      * @param {string} selectedMode
      * @returns {string}
      */
-    rederComparison: function(modesArray, selectedMode) {
+    renderComparison: function(modesArray, selectedMode) {
         if (!Array.isArray(modesArray)) {
             return '<div class="comparison__empty">Nenhum modo disponível para comparação.</div>';
         }
@@ -194,7 +194,7 @@ var UI = {
      * @param {Object} credsData
      * @returns {string}
      */
-    renderCarbonCredts: function(credsData) {
+    renderCarbonCredits: function(credsData) {
         if (!credsData || typeof credsData.credits !== 'number' || !credsData.price) {
             return '<div class="carbon-credits__empty">Dados de créditos indisponíveis.</div>';
         }
