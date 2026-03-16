@@ -24,7 +24,7 @@ Este projeto foi criado como parte do **Projeto Github Copilot** da DIO (Digital
 
 ## 📋 Como Usar
 
-1. **Acesse a Aplicação**: Abra o arquivo `index.html` em qualquer navegador moderno. Ou acesso pelo [github pages]('https://maxwelldeveloper7.github.io/github-copilot-na-pratica/')
+1. **Acesse a Aplicação**: Abra o arquivo `index.html` em qualquer navegador moderno. Ou acesso pelo [github pages ](https://maxwelldeveloper7.github.io/github-copilot-na-pratica/)
 2. **Preencha os Dados**:
    - Selecione origem e destino nas listas de cidades brasileiras.
    - Escolha o modo de transporte (bicicleta, carro, ônibus ou caminhão).
